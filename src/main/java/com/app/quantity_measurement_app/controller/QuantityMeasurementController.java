@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/quantities")
 @Tag(name = "Quantity Measurements", description = "REST API for quantity measurement operations")
@@ -236,5 +238,12 @@ public class QuantityMeasurementController {
         errorResponse.setErrorMessage(ex.getMessage());
         errorResponse.setError(true);
         return errorResponse;
+    }
+    
+    @GetMapping("/history")
+    @Operation(summary = "Get all operation history")
+    public ResponseEntity<List<QuantityMeasurementDTO>> getAllHistory() {
+        // Return all history records from your database/service
+        return ResponseEntity.ok(service.getAllHistory());
     }
 }

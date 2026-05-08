@@ -291,4 +291,10 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
                 .map(QuantityMeasurementDTO::from)
                 .collect(Collectors.toList());
     }
+    
+    @Override
+    public List<QuantityMeasurementDTO> getAllHistory() {
+        // Fetch all records from repository
+        return QuantityMeasurementDTO.fromList(repository.findAll());
+    }
 }

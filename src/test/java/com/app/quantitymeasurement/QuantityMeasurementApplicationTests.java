@@ -1,5 +1,6 @@
 package com.app.quantitymeasurement;
 
+import com.app.quantity_measurement_app.QuantityMeasurementApplication;
 import com.app.quantity_measurement_app.model.*;
 import com.app.quantity_measurement_app.repository.QuantityMeasurementRepository;
 import org.junit.jupiter.api.*;
@@ -18,7 +19,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+	    classes = QuantityMeasurementApplication.class,
+	    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+	)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureMockMvc
 public class QuantityMeasurementApplicationTests {
